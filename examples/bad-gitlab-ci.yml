@@ -1,0 +1,40 @@
+# Demo pipeline. Every rule should fire at least once.
+image: node:latest
+
+variables:
+  GIT_STRATEGY: clone
+
+stages:
+  - build
+  - test
+  - deploy
+
+include:
+  - remote: 'https://example.com/templates/build.yml'
+  - project: 'group/templates'
+    file: '/templates/test.yml'
+    ref: main
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+test:
+  stage: test
+  tags:
+    - saas-linux-2xlarge-amd64
+  script:
+    - npm test
+  parallel: 16
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - echo deploying
