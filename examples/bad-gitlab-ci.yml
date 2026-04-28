@@ -1,6 +1,14 @@
 # Demo pipeline. Every rule should fire at least once.
 image: node:latest
 
+services:
+  - postgres:14
+  - name: redis:latest
+
+after_script:
+  - env
+  - echo "done with $CI_JOB_TOKEN"
+
 variables:
   GIT_STRATEGY: clone
 

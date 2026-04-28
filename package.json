@@ -1,6 +1,6 @@
 {
   "name": "gitlab-ci-doctor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Audit GitLab CI pipelines for waste, cost, and security gaps. Fast, opinionated, CI-friendly. Sister project to ci-doctor.",
   "keywords": [
     "gitlab",
@@ -46,5 +46,8 @@
   "homepage": "https://github.com/depmedicdev-byte/gitlab-ci-doctor#readme",
   "bugs": {
     "url": "https://github.com/depmedicdev-byte/gitlab-ci-doctor/issues"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
   }
 }

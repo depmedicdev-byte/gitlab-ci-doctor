@@ -13,4 +13,6 @@ module.exports = [
   require('./missing-needs'),
   require('./wide-rules'),
   require('./include-no-pin'),
+  require('./services-no-pin'),
+  require('./after-script-leaks'),
 ];

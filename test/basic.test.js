@@ -23,6 +23,8 @@ test('demo pipeline fires multiple rules', () => {
   assert.ok(ids.has('missing-needs'), 'missing-needs should fire on later-stage jobs');
   assert.ok(ids.has('wide-rules'), 'wide-rules should fire when no workflow:rules');
   assert.ok(ids.has('include-no-pin'), 'include-no-pin should fire on remote include');
+  assert.ok(ids.has('services-no-pin'), 'services-no-pin should fire on postgres:14 / redis:latest');
+  assert.ok(ids.has('after-script-leaks'), 'after-script-leaks should fire on env / echo $CI_JOB_TOKEN');
   const s = summarize(findings);
   assert.ok(s.warn + s.info > 0);
 });
